@@ -1,0 +1,21 @@
+@extends('layout')
+
+@section('title')
+  C言語練習問題
+@endsection
+
+@section('content')
+        <tbody>
+            <ul class="rentals">
+              @foreach($result as $row)
+              <tr>
+                <td>{{ $row->id}}</td>
+                <td>{{ $row->name}}</td>
+                <td>{{ $row->question }}<br></td>
+	      </tr>
+              @endforeach
+            </ul>
+        </tbody>
+
+  
+@endsection
