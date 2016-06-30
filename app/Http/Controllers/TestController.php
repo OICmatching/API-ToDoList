@@ -25,7 +25,7 @@ class TestController extends Controller
     {
     $result=DB::table('ToDo')
     ->get();
-	return response()->json($result);
+    return response()->json($result);
     }
 
     /**
@@ -46,14 +46,14 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-    if(Input::get('name') == null || Input::get('todo') == null)
+    if(Input::get('todo') == null || Input::get('flug') == null)
     {
         return response()->json('Bad Request',400);
     }
     DB::table('ToDo')
     ->insert([
-    'name' => Input::get('name'),
     'todo' => Input::get('todo'),
+    'flug' => Input::get('flug'),
     ]);
     return response()->json('Store Complete',200);
     }
@@ -66,7 +66,7 @@ class TestController extends Controller
      */
     public function show($id)
     {
-	$value=DB::table('ToDo')
+    $value=DB::table('ToDo')
     ->where('id', $id)
     ->get();
     if($value == null)
@@ -84,8 +84,8 @@ class TestController extends Controller
      */
     public function edit($id)
     {
-	$result = 'EDIT';
-	return response()->json($result);;
+    $result = 'EDIT';
+    return response()->json($result);;
     }
 
     /**
@@ -101,14 +101,14 @@ class TestController extends Controller
     ->where('id', $id)
     ->get();
 
-    if($value == null || Input::get('name') == null || Input::get('todo') == null)
+    if($value == null || Input::get('todo') == null || Input::get('flug') == null)
     {
         return response()->json('Bad Request',400);
     }
 
-	DB::table('ToDo')
+    DB::table('ToDo')
     ->where('id', $id)
-    ->update(['name'=>Input::get('name'), 'todo'=>Input::get('todo')]);
+    ->update(['todo'=>Input::get('todo'), 'flug'=>Input::get('flug')]);
     return response()->json('Update Complete',200);
     }
 
@@ -129,11 +129,11 @@ class TestController extends Controller
         return response()->json('Bad Request',400);
     }
 
-	DB::table('ToDo')
+    DB::table('ToDo')
     ->where('id' ,$id )
     ->delete();
 
-	return response()->json('Delete Complete',200);
+    return response()->json('Delete Complete',200);
     }
 
 }

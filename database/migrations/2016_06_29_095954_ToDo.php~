@@ -12,7 +12,11 @@ class ToDo extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('ToDo', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('todo');
+        });
     }
 
     /**
@@ -22,6 +26,6 @@ class ToDo extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('ToDo');
     }
 }

@@ -14,8 +14,8 @@ class ToDo extends Migration
     {
         Schema::create('ToDo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
             $table->string('todo');
+            $table->boolean('flug');
         });
     }
 

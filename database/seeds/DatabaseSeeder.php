@@ -12,23 +12,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call('QuestionsTableSeeder');
+        $this->call('ToDoTableSeeder');
 
-        $this->command->info('Questions table seeded!');	
+        $this->command->info('ToDo table seeded!');	
     }
 }
 
-class QuestionsTableSeeder extends Seeder {
+class ToDoTableSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('Questions')->delete();
+        DB::table('ToDo')->delete();
 	
 	for($i=0 ;  $i<10 ; $i++){
-        DB::table('Questions')->insert([
+        DB::table('ToDo')->insert([
             'id' => '0',
-            'name' => str_random(10),
-            'question' => str_random(10),
+            'todo' => str_random(10),
+            'flug' => 'false',
         ]);
 	}
     }
