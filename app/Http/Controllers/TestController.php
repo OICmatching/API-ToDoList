@@ -105,11 +105,11 @@ class TestController extends Controller
         return response()->json('Bad Request',400);
     }
     $params;
-    if(Input::get['todo'] != null){
-      $params['todo'] = Input::get['todo'];
+    if(Input::get('todo') != null){
+      $params['todo'] = Input::get('todo');
     }
-    if(Input::get['flug'] != null){
-      $params['flug'] = Input::get['flug'];
+    if(Input::get('flug') != null){
+      $params['flug'] = Input::get('flug');
     }
     DB::table('ToDo')
     ->where('id', $id)
