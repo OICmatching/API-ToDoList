@@ -50,7 +50,7 @@ class TestController extends Controller
       {
           return response()->json('Bad Request',400);
       }
-      $value = DB::table('ToDo')->insert([
+      DB::table('ToDo')->insert([
         'todo' => Input::get('todo'),
         'flug' => false,
       ]);
