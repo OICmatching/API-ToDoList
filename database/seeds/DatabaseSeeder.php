@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call('ToDoTableSeeder');
 
-        $this->command->info('ToDo table seeded!');	
+        $this->command->info('ToDo table seeded!');
     }
 }
 
@@ -23,10 +23,10 @@ class ToDoTableSeeder extends Seeder {
     public function run()
     {
         DB::table('ToDo')->delete();
-	
+
 	for($i=0 ;  $i<10 ; $i++){
         DB::table('ToDo')->insert([
-            'id' => '0',
+            'id' => $i,
             'todo' => str_random(10),
             'flug' => 'false',
         ]);
