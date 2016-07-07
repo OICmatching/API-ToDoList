@@ -50,11 +50,11 @@ class TestController extends Controller
       {
           return response()->json('Bad Request',400);
       }
-      DB::table('ToDo')->insert([
+      $value = DB::table('ToDo')->insert([
         'todo' => Input::get('todo'),
         'flug' => false,
       ]);
-      return response()->json('Store Complete',200);
+      return response()->json($value,200);
     }
 
     /**
@@ -67,7 +67,7 @@ class TestController extends Controller
     {
     $value=DB::table('ToDo')
     ->where('id', $id)
-    ->get();
+    ->first();
     if($value == null)
     {
         return response()->json('Bad Request',400);
