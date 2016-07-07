@@ -25,7 +25,7 @@ class ToDoTableSeeder extends Seeder {
         DB::table('ToDo')->delete();
 
 	for($i=0 ;  $i<10 ; $i++){
-        DB::table('ToDo')->insert([
+        DB::table('ToDo')->insertGetId([
             'id' => $i,
             'todo' => str_random(10),
             'flug' => 'false',
