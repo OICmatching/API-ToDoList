@@ -104,7 +104,7 @@ class TestController extends Controller
     {
         return response()->json('Bad Request',400);
     }
-    $parms;
+    $params;
     if(Input::get['todo'] != null){
       $params['todo'] = Input::get['todo'];
     }
