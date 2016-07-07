@@ -23,9 +23,9 @@ class TestController extends Controller
      */
     public function index()
     {
-    $result=DB::table('ToDo')
-    ->get();
-    return response()->json($result);
+      $result=DB::table('ToDo')
+      ->get();
+      return response()->json($result);
     }
 
     /**
@@ -46,16 +46,15 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-    if(Input::get('todo') == null || Input::get('flug') == null)
-    {
-        return response()->json('Bad Request',400);
-    }
-    DB::table('ToDo')
-    ->insert([
-    'todo' => Input::get('todo'),
-    'flug' => Input::get('flug'),
-    ]);
-    return response()->json('Store Complete',200);
+      if(Input::get('todo') == null)
+      {
+          return response()->json('Bad Request',400);
+      }
+      DB::table('ToDo')->insert([
+        'todo' => Input::get('todo'),
+        'flug' => false,
+      ]);
+      return response()->json('Store Complete',200);
     }
 
     /**
@@ -101,14 +100,20 @@ class TestController extends Controller
     ->where('id', $id)
     ->get();
 
-    if($value == null || Input::get('todo') == null || Input::get('flug') == null)
+    if($value == null )
     {
         return response()->json('Bad Request',400);
     }
-
+    $parms;
+    if(Input::get['todo'] != null){
+      $params['todo'] = Input::get['todo'];
+    }
+    if(Input::get['flug'] != null){
+      $params['flug'] = Input::get['flug'];
+    }
     DB::table('ToDo')
     ->where('id', $id)
-    ->update(['todo'=>Input::get('todo'), 'flug'=>Input::get('flug')]);
+    ->update($params);
     return response()->json('Update Complete',200);
     }
 
