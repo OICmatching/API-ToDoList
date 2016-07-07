@@ -46,7 +46,6 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-      dd('hoge');
       if(Input::get('todo') == null)
       {
           return response()->json('Bad Request',400);
@@ -55,7 +54,7 @@ class TestController extends Controller
         'todo' => Input::get('todo'),
         'flug' => false,
       ]);
-      return response()->json($value,200);
+      return response()->json('Store Complete',200);
     }
 
     /**
